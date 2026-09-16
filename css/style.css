@@ -1,0 +1,658 @@
+/* ==========================================
+   VARIABLES Y CONFIGURACIÓN GENERAL
+   ========================================== */
+
+:root {
+    --fondo: #070b17;
+    --fondo-secundario: #0d1428;
+    --tarjeta: #111a31;
+    --tarjeta-hover: #162340;
+
+    --azul: #38bdf8;
+    --azul-oscuro: #0284c7;
+    --violeta: #8b5cf6;
+    --cian: #22d3ee;
+
+    --texto: #e5e7eb;
+    --texto-secundario: #aab4c8;
+    --blanco: #ffffff;
+
+    --borde: rgba(56, 189, 248, 0.25);
+
+    --sombra:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+
+    --radio: 16px;
+}
+
+
+/* ==========================================
+   RESET
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(56, 189, 248, 0.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(139, 92, 246, 0.10),
+            transparent 30%
+        ),
+        var(--fondo);
+
+    color: var(--texto);
+    line-height: 1.7;
+}
+
+
+/* ==========================================
+   SELECCIÓN DE TEXTO
+   ========================================== */
+
+::selection {
+    background: var(--azul);
+    color: #00111c;
+}
+
+
+/* ==========================================
+   CABECERA
+   ========================================== */
+
+header {
+    min-height: 75vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background:
+        linear-gradient(
+            rgba(7, 11, 23, 0.65),
+            rgba(7, 11, 23, 0.95)
+        ),
+        radial-gradient(
+            circle at center,
+            rgba(34, 211, 238, 0.15),
+            transparent 55%
+        );
+
+    border-bottom: 1px solid var(--borde);
+}
+
+header h1 {
+    max-width: 1000px;
+
+    font-size: clamp(2.5rem, 6vw, 5rem);
+
+    line-height: 1.05;
+
+    font-weight: 800;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cian),
+            var(--azul),
+            var(--violeta)
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    margin-bottom: 25px;
+}
+
+header p {
+    max-width: 750px;
+
+    color: var(--texto-secundario);
+
+    font-size: clamp(1.05rem, 2vw, 1.4rem);
+}
+
+
+/* ==========================================
+   NAVEGACIÓN
+   ========================================== */
+
+nav {
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    background: rgba(7, 11, 23, 0.88);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid var(--borde);
+}
+
+nav ul {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 15px 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    list-style: none;
+
+    overflow-x: auto;
+}
+
+nav a {
+    display: block;
+
+    padding: 9px 14px;
+
+    color: var(--texto-secundario);
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+
+    border-radius: 8px;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+
+    white-space: nowrap;
+}
+
+nav a:hover {
+    color: var(--blanco);
+
+    background: rgba(56, 189, 248, 0.12);
+
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   CONTENIDO PRINCIPAL
+   ========================================== */
+
+main {
+    width: min(1100px, 92%);
+
+    margin: auto;
+}
+
+section {
+    padding: 90px 0;
+
+    scroll-margin-top: 80px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+section > h2 {
+    margin-bottom: 30px;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+
+    line-height: 1.15;
+
+    color: var(--blanco);
+
+    position: relative;
+}
+
+section > h2::after {
+    content: "";
+
+    display: block;
+
+    width: 70px;
+    height: 4px;
+
+    margin-top: 15px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cian),
+            var(--violeta)
+        );
+}
+
+section > p {
+    max-width: 850px;
+
+    margin-bottom: 20px;
+
+    color: var(--texto-secundario);
+
+    font-size: 1.05rem;
+}
+
+
+/* ==========================================
+   ARTÍCULOS / TARJETAS
+   ========================================== */
+
+article {
+    margin: 30px 0;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17, 26, 49, 0.95),
+            rgba(13, 20, 40, 0.85)
+        );
+
+    border: 1px solid var(--borde);
+
+    border-radius: var(--radio);
+
+    box-shadow: var(--sombra);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+article:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(34, 211, 238, 0.55);
+
+    background: var(--tarjeta-hover);
+}
+
+article h3 {
+    margin-bottom: 15px;
+
+    color: var(--cian);
+
+    font-size: 1.45rem;
+}
+
+article p {
+    color: var(--texto-secundario);
+
+    margin-bottom: 15px;
+}
+
+
+/* ==========================================
+   BLOQUES DE CITA
+   ========================================== */
+
+blockquote {
+    margin: 25px 0;
+
+    padding: 25px 30px;
+
+    border-left: 4px solid var(--violeta);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(139, 92, 246, 0.12),
+            rgba(139, 92, 246, 0.03)
+        );
+
+    border-radius: 0 12px 12px 0;
+}
+
+blockquote p {
+    color: var(--texto);
+
+    font-size: 1.15rem;
+
+    font-style: italic;
+}
+
+blockquote cite {
+    display: block;
+
+    margin-top: 10px;
+
+    color: var(--cian);
+
+    font-size: 0.95rem;
+
+    font-style: normal;
+}
+
+
+/* ==========================================
+   LISTAS
+   ========================================== */
+
+article ul {
+    margin-top: 15px;
+
+    padding-left: 25px;
+
+    color: var(--texto-secundario);
+}
+
+article li {
+    margin: 10px 0;
+
+    padding-left: 5px;
+}
+
+article li::marker {
+    color: var(--cian);
+}
+
+
+/* ==========================================
+   VIDEO
+   ========================================== */
+
+figure {
+    margin: 35px 0;
+}
+
+iframe {
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    border: 0;
+
+    border-radius: var(--radio);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.45);
+
+    background: #000;
+}
+
+figcaption {
+    margin-top: 12px;
+
+    color: var(--texto-secundario);
+
+    text-align: center;
+
+    font-size: 0.9rem;
+}
+
+
+/* ==========================================
+   GALERÍA
+   ========================================== */
+
+#galeria {
+    text-align: center;
+}
+
+#galeria > p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#galeria figure {
+    display: inline-block;
+
+    vertical-align: top;
+
+    width: calc(33.333% - 20px);
+
+    margin: 30px 8px;
+}
+
+#galeria img {
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 3;
+
+    object-fit: cover;
+
+    border-radius: var(--radio);
+
+    border: 1px solid var(--borde);
+
+    box-shadow: var(--sombra);
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease,
+        border-color 0.4s ease;
+}
+
+#galeria img:hover {
+    transform: scale(1.04);
+
+    filter: brightness(1.15);
+
+    border-color: var(--cian);
+}
+
+
+/* ==========================================
+   CONCLUSIÓN
+   ========================================== */
+
+#conclusion {
+    text-align: center;
+}
+
+#conclusion > p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#conclusion blockquote {
+    max-width: 850px;
+
+    margin: 40px auto;
+
+    text-align: left;
+
+    border-left-color: var(--cian);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(34, 211, 238, 0.12),
+            rgba(139, 92, 246, 0.10)
+        );
+}
+
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+footer {
+    padding: 50px 20px;
+
+    text-align: center;
+
+    background: #040710;
+
+    border-top: 1px solid var(--borde);
+
+    color: var(--texto-secundario);
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer p:first-child {
+    color: var(--cian);
+
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   EFECTO DE FONDO
+   ========================================== */
+
+section::before {
+    content: "";
+
+    position: absolute;
+}
+
+
+/* ==========================================
+   RESPONSIVE - TABLETS
+   ========================================== */
+
+@media (max-width: 900px) {
+
+    #galeria figure {
+        width: calc(50% - 20px);
+    }
+
+    nav ul {
+        justify-content: flex-start;
+    }
+
+}
+
+
+/* ==========================================
+   RESPONSIVE - MÓVILES
+   ========================================== */
+
+@media (max-width: 600px) {
+
+    header {
+        min-height: 65vh;
+
+        padding: 60px 20px;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    main {
+        width: 90%;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    section > h2 {
+        font-size: 2rem;
+    }
+
+    article {
+        padding: 22px;
+
+        margin: 20px 0;
+    }
+
+    article h3 {
+        font-size: 1.25rem;
+    }
+
+    blockquote {
+        padding: 20px;
+    }
+
+    blockquote p {
+        font-size: 1rem;
+    }
+
+    #galeria figure {
+        display: block;
+
+        width: 100%;
+
+        margin: 30px 0;
+    }
+
+    nav ul {
+        padding: 10px;
+
+        gap: 3px;
+    }
+
+    nav a {
+        padding: 8px 10px;
+
+        font-size: 0.8rem;
+    }
+
+}
+
+
+/* ==========================================
+   ACCESIBILIDAD
+   ========================================== */
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--cian);
+
+    outline-offset: 3px;
+}
+
+
+/* ==========================================
+   REDUCCIÓN DE ANIMACIONES
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+
+        animation: none !important;
+    }
+
+}
